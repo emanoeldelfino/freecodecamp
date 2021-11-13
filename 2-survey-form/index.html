@@ -6,9 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Survey Form</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
   <body>
     <main>
+      <div id="background"></div>
       <h1 id="title">E-commerce Survey Form</h1>
       <p id="description">
         Thanks for your time reviewing our e-commerce marketplace
@@ -170,5 +172,15 @@
       </form>
     </main>
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script>
+      var bg = $("#bg1, #bg2");
+
+      function resizeBackground() {
+        bg.height($(window).height());
+      }
+
+      $(window).resize(resizeBackground);
+      resizeBackground();
+    </script>
   </body>
 </html>
