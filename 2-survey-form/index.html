@@ -1,71 +1,174 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Survey Form</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <main>
-    <h1 id="title">Title</h1>
-    <p id="description">This is a form</p>
-    <form action="" id="survey-form">
-      <input type="text" id="name">
-      <input type="email" id="email" placeholder="Enter your e-mail">
-      <input type="number" id="number" placeholder="Your number" min="0" max="10">
-      <select name="dropdown" id="dropdown">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <div class="form-group">
-        <input type="radio" id="first" name="options" value="first">
-        <label for="first">First</label>
-        <input type="radio" id="second" name="options" value="second">
-        <label for="second">Second</label>
-        <input type="radio" id="third" name="options" value="third">
-        <label for="third">Third</label>
-      </div>
-      <select name="dropdown" id="dropdown">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-      </select>
-      <div class="form-group">
-        <input type="checkbox" id="first" name="options" value="first">
-        <label for="first">First</label>
-        <input type="checkbox" id="second" name="options" value="second">
-        <label for="second">Second</label>
-        <input type="checkbox" id="third" name="options" value="third">
-        <label for="third">Third</label>
-        <input type="checkbox" id="fourth" name="options" value="fourth">
-        <label for="fourth">Fourth</label>
-        <input type="checkbox" id="fifth" name="options" value="fifth">
-        <label for="fifth">Fifth</label>
-        <input type="checkbox" id="sixth" name="options" value="sixth">
-        <label for="sixth">Sixth</label>
-        <input type="checkbox" id="seventh" name="options" value="seventh">
-        <label for="seventh">Seventh</label>
-        <input type="checkbox" id="eigth" name="options" value="eigth">
-        <label for="eigth">Eigth</label>
-        <input type="checkbox" id="nineth" name="options" value="nineth">
-        <label for="nineth">Nineth</label>
-        <input type="checkbox" id="tenth" name="options" value="tenth">
-        <label for="tenth">Tenth</label>
-      </div>
-      <div class="form-group">
-        <p>Comments or suggestions?</p>
-        <textarea name="comments" id="comments" cols="30" rows="10"></textarea>
-      </div>
-      <input type="submit" value="Submit">
-    </form>
-  </main>
-  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Survey Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <h1 id="title">E-commerce Survey Form</h1>
+      <p id="description">
+        Thanks for your time reviewing our e-commerce marketplace
+      </p>
+      <form id="survey-form">
+        <div class="form-group">
+          <label for="name" id="name-label">
+            Name
+            <input type="text" id="name" placeholder="Enter your name" />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="email" id="email-label">
+            E-mail
+            <input type="email" id="email" placeholder="Enter your e-mail" />
+          </label>
+        </div>
+        <div class="form-group">
+          <label for="number" id="number-label">
+            Number of products you bought in our platform
+            <input
+              type="number"
+              id="number"
+              placeholder="Enter the number of products"
+              min="1"
+              max="100"
+            />
+          </label>
+        </div>
+        <div class="form-group select-group">
+          <p>What is good about the platform?</p>
+          <select name="dropdown" id="dropdown">
+            <option disabled value="" selected>Select</option>
+            <option value="1">Browsing</option>
+            <option value="2">Security</option>
+            <option value="3">Products</option>
+            <option value="4">Price</option>
+          </select>
+        </div>
+        <div class="form-group select-group">
+          <p>What is not good?</p>
+          <select name="dropdown" id="dropdown">
+            <option disabled value="" selected>Select</option>
+            <option value="1">Design</option>
+            <option value="2">Sellers</option>
+            <option value="3">Options</option>
+            <option value="5">Number of products</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <p>Would you recommend our platform to a friend?</p>
+
+          <label for="first-radio"
+            ><input
+              type="radio"
+              id="first-radio"
+              name="options"
+              value="first-radio"
+            />
+            Surely
+          </label>
+
+          <label for="second-radio"
+            ><input
+              type="radio"
+              id="second-radio"
+              name="options"
+              value="second-radio"
+            />
+            Yes
+          </label>
+
+          <label for="third-radio"
+            ><input
+              type="radio"
+              id="third-radio"
+              name="options"
+              value="third-radio"
+            />
+            Maybe
+          </label>
+
+          <label for="fourth-radio"
+            ><input
+              type="radio"
+              id="fourth-radio"
+              name="options"
+              value="fourth-radio"
+            />
+            No
+          </label>
+
+          <label for="fifth-radio"
+            ><input
+              type="radio"
+              id="fifth-radio"
+              name="options"
+              value="fifth-radio"
+            />
+            Absolutely not
+          </label>
+        </div>
+
+        <div class="form-group">
+          <p>What are the products that you buy online in general?</p>
+
+          <label for="first-checkbox"
+            ><input
+              type="checkbox"
+              id="first-checkbox"
+              name="options"
+              value="first-checkbox"
+            />
+            Clothes
+          </label>
+
+          <label for="second-checkbox">
+            <input
+              type="checkbox"
+              id="second-checkbox"
+              name="options"
+              value="second-checkbox"
+            />
+            Electronic devices
+          </label>
+
+          <label for="third-checkbox">
+            <input
+              type="checkbox"
+              id="third-checkbox"
+              name="options"
+              value="third-checkbox"
+            />
+            Books/E-books
+          </label>
+
+          <label for="fourth-checkbox">
+            <input
+              type="checkbox"
+              id="fourth-checkbox"
+              name="options"
+              value="fourth-checkbox"
+            />
+            Games
+          </label>
+        </div>
+        <div class="form-group">
+          <p>Comments or suggestions?</p>
+          <textarea
+            name="comments"
+            id="comments"
+            placeholder="Enter your suggestions here..."
+          ></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" id="submit">Submit</button>
+        </div>
+      </form>
+    </main>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+  </body>
 </html>
