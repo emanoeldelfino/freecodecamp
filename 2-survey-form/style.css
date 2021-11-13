@@ -35,9 +35,14 @@ input {
   margin: 5px 0;
 }
 
+#title, #description {
+  width: 100%;
+  text-align: center;
+}
+
 #survey-form {
   background-color: rgba(255, 255, 255, 0.479);
-  border-radius: 10px;
+  border-radius: 5px;
   margin: 40px 0;
   padding: 30px;
   min-width: 90%;
@@ -115,4 +120,16 @@ p {
 
 .form-group:not(:first-child) {
   margin-top: 15px;
+}
+
+@media(max-width: 500px) {
+  #title, #description {
+    padding: 0 15px;
+  }
+  main, #survey-form {
+    margin: 40px 0 0 0;
+  }
+  #survey-form {
+    border-radius: 5px 5px 0 0;
+  }
 }
