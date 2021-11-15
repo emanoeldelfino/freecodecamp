@@ -7,7 +7,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  margin: 15px 35px;
+  margin: 30px 75px 0;
+  background-color: rgba(0, 102, 255, 0.12);
 }
 
 header {
@@ -45,13 +46,64 @@ nav#nav-bar {
   margin-right: 10%;
 }
 
+#features {
+  display: flex;
+  justify-content: space-around;
+  margin: 0 auto 60px;
+}
+
+#features div {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+}
+
+#features div span:first-child {
+  cursor: pointer;
+  font-size: 40px;
+}
+
+.tooltip-text {
+  visibility: hidden;
+  position: absolute;
+  max-width: 300px;
+  pointer-events: none;
+  margin-bottom: 55px;
+  text-align: justify;
+  background-color: black;
+  color: white;
+  padding: 10px 25px;
+  border-radius: 10px;
+}
+
+#features div span:hover+span {
+  visibility: visible;
+}
+
+#features span, #logo h1 {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Old versions of Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
+}
+
 #video {
   display: flex;
   justify-content: center;
 }
 
-#video video, #about-us {
-  width: 85%;
+#about-us, #features, #video video {
+  width: 90%;
+  max-width: 1250px;
 }
 
 .nav__links {
@@ -59,30 +111,44 @@ nav#nav-bar {
   justify-content: space-between;
 }
 
-.nav__links li {
+.nav__links li, footer li {
   list-style: none;
 }
 
-.nav__links li a {
+.nav__links li a, footer li a {
   text-decoration: none;
-  color: black;
+  color: #000;
 }
 
 form#form {
+  margin-top: 50px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 30px;
+  justify-content: center;
+}
+
+input {
+  border: 1px solid #777;
+  border-radius: 10px;
+  height: 35px;
 }
 
 input#email {
+  width: 50%;
   margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+input#submit {
+  width: 180px;
+  transition: .7s background-color;
+}
+
+input#submit:hover {
+  background-color: rgba(124, 124, 124, .75);
 }
 
 input#submit, input#email {
-  width: 50%;
   max-width: 300px;
-  min-width: 150px;
   padding: 5px;
 }
 
@@ -94,7 +160,12 @@ footer {
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  width: 100%;
+  padding: 15px;
+  background-color: rgba(0, 102, 255, .05);
+}
+
+#copyright {
+  margin-top: 15px;
 }
 
 @media (max-width: 1050px) {

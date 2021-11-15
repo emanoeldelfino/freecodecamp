@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Product Landing Page</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <header id="header">
@@ -32,8 +36,32 @@
         </p>
       </section>
 
+      <section id="features">
+        <div>
+          <span class="material-icons"> monetization_on </span>
+          <span class="tooltip-text">
+            Good price - Our bottles have a fair price, we're not focused in
+            revenue, but in changing people's lives!
+          </span>
+        </div>
+        <div>
+          <span class="material-icons"> recommend </span>
+          <span class="tooltip-text">
+            Quality - Our bottles are made with the best materials, with
+            responsibility and sustainability in mind.
+          </span>
+        </div>
+        <div>
+          <span class="material-icons"> lens </span>
+          <span class="tooltip-text">
+            Simplicity - We're not a fancy bottle brand, we're a simple one, but
+            a good one.
+          </span>
+        </div>
+      </section>
+
       <section id="video">
-        <video autoplay="autoplay" loop>
+        <video autoplay loop>
           <source src="./assets/woman-drinking.mp4" type="video/mp4" />
         </video>
       </section>
@@ -47,10 +75,12 @@
       </form>
     </main>
     <footer>
-      <span>Instagram</span>
-      <span>Twitter</span>
-      <span>TikTok</span>
-      <span>© 2021, uBottle</span>
+      <ul>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Twitter</a></li>
+        <li><a href="#">TikTok</a></li>
+      </ul>
+      <span id="copyright">© 2021, uBottle</span>
     </footer>
   </body>
 </html>
