@@ -21,7 +21,7 @@
         <ul class="nav__links">
           <li><a href="#about-us" class="nav-link">About Us</a></li>
           <li><a href="#video" class="nav-link">Video</a></li>
-          <li><a href="#bottles" class="nav-link">Bottles & Pricing</a></li>
+          <li><a href="#bottles" class="nav-link">Bottles</a></li>
         </ul>
       </nav>
     </header>
@@ -41,7 +41,7 @@
           <span class="material-icons"> monetization_on </span>
           <span class="tooltip-text">
             Good price - Our bottles have a fair price, we're not focused in
-            revenue, but in changing people's lives!
+            revenue, but in changing people's lives with a good product!
           </span>
         </div>
         <div>
@@ -60,27 +60,51 @@
         </div>
       </section>
 
-      <section id="video">
-        <video autoplay loop>
-          <source src="./assets/woman-drinking.mp4" type="video/mp4" />
-        </video>
+      <section id="promotional-video">
+        <iframe
+          id="video"
+          src="https://www.youtube.com/embed/PYdKNnH0_gA?autoplay=1&mute=1"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
       </section>
 
       <section id="bottles">
-        <!-- Slider of bottles -->
+        <img src="./assets/slider1.jpg" alt="Bottle" />
       </section>
       <form id="form" action="https://www.freecodecamp.com/email-submit">
-        <input id="email" type="email" placeholder="Your e-mail" required />
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Your e-mail"
+          required
+        />
         <input type="submit" value="Find out more about it" id="submit" />
       </form>
     </main>
     <footer>
       <ul>
-        <li><a href="#">Instagram</a></li>
-        <li><a href="#">Twitter</a></li>
-        <li><a href="#">TikTok</a></li>
+        <li><a href="https://instagram.com">Instagram</a></li>
+        <li><a href="https://twitter.com">Twitter</a></li>
+        <li><a href="https://tiktok.com">TikTok</a></li>
       </ul>
-      <span id="copyright">© 2021, uBottle</span>
+      <span id="copyright">© 2021 uBottle</span>
     </footer>
   </body>
+  <script>
+    let i = 1;
+
+    const slide = document.querySelector("section#bottles img");
+
+    function changeSlide() {
+      slide.src = `./assets/slider${i}.jpg`;
+      i = i < 3 ? i + 1 : 1;
+      setTimeout(changeSlide, 3000);
+    }
+    changeSlide();
+  </script>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </html>

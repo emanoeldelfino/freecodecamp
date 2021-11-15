@@ -7,13 +7,33 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  margin: 30px 75px 0;
-  background-color: rgba(0, 102, 255, 0.12);
+  background-color: rgb(215, 226, 241);
+}
+
+main, footer {
+  margin: 0 75px;
+}
+
+main {
+  margin-top: 50px;
 }
 
 header {
   display: flex;
   align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: rgb(215, 226, 241);
+}
+
+#text {
+  font-size: 19px;
+  max-width: 400px;
+}
+
+#logo img {
+  margin-left: 10px;
 }
 
 nav#nav-bar {
@@ -25,7 +45,7 @@ nav#nav-bar {
   align-items: center;
   justify-content: space-between;
   margin: auto;
-  padding: 50px 0;
+  padding: 50px;
 }
 
 #phrase {
@@ -37,13 +57,12 @@ nav#nav-bar {
 
 #text {
   text-align: justify;
-  max-width: 400px;
+  min-width: 200px;
 }
 
 #logo {
   display: flex;
   align-items: center;
-  margin-right: 10%;
 }
 
 #features {
@@ -66,10 +85,9 @@ nav#nav-bar {
 .tooltip-text {
   visibility: hidden;
   position: absolute;
-  max-width: 300px;
+  max-width: 330px;
   pointer-events: none;
   margin-bottom: 55px;
-  text-align: justify;
   background-color: black;
   color: white;
   padding: 10px 25px;
@@ -96,19 +114,32 @@ nav#nav-bar {
                                 supported by Chrome, Edge, Opera and Firefox */
 }
 
-#video {
+#promotional-video {
   display: flex;
   justify-content: center;
 }
 
-#about-us, #features, #video video {
-  width: 90%;
+iframe#video {
+  width: 90vw;
+  height: 90vw;
+  max-width: 600px;
+  max-height: 600px;
+  margin-bottom: 50px;
+}
+
+#about-us, #features {
   max-width: 1250px;
 }
 
 .nav__links {
   display: flex;
   justify-content: space-between;
+  margin: 0 30px;
+}
+
+.nav__links li {
+  font-size: 20px;
+  text-align: center;
 }
 
 .nav__links li, footer li {
@@ -120,10 +151,15 @@ nav#nav-bar {
   color: #000;
 }
 
-form#form {
-  margin-top: 50px;
+#form {
+  margin: 30px 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+#submit {
+  margin-top: 15px;
 }
 
 input {
@@ -132,43 +168,65 @@ input {
   height: 35px;
 }
 
-input#email {
-  width: 50%;
-  margin-bottom: 10px;
-  margin-right: 10px;
+#email {
+  text-align: center;
 }
 
-input#submit {
-  width: 180px;
+#submit {
   transition: .7s background-color;
 }
 
 input#submit:hover {
-  background-color: rgba(124, 124, 124, .75);
+  background-color: rgba(0, 0, 0, .4);
 }
 
-input#submit, input#email {
+#submit, #email {
   max-width: 300px;
-  padding: 5px;
+  width: 250px;
+  font-size: 17px;
 }
 
 input#email::placeholder {
   text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+#bottles {
+  display: flex;
+  justify-content: center;
+}
+
+#bottles img {
+  height: 50vh;
 }
 
 footer {
-  margin-top: 50px;
   display: flex;
   flex-direction: column;
   padding: 15px;
   background-color: rgba(0, 102, 255, .05);
 }
 
+footer ul li {
+  margin-right: 15px;
+}
+
+footer ul {
+  display: flex;
+  flex-direction: row;
+}
+
 #copyright {
   margin-top: 15px;
 }
 
-@media (max-width: 1050px) {
+@media (max-width: 1150px) {
+  #text {
+    max-width: 806.23px;
+  }
+  main, form {
+    margin: 100px 0 30px 0;
+  }
   #about-us {
     flex-direction: column;
     align-items: space-between;
@@ -178,6 +236,31 @@ footer {
   }
   #text {
     margin-top: 30px;
-    max-width: none;
+  }
+}
+
+@media (max-width: 700px) {
+  header {
+    flex-direction: column;
+    padding-bottom: 15px;
+  }
+  footer {
+    margin: 0;
+  }
+  #bottles img {
+    height: 30vh;
+  }
+}
+
+@media (max-width: 400px) {
+  main {
+    margin-top: 200px;
+  }
+  header .nav__links {
+    flex-direction: column;
+    align-items: center;
+  }
+  header .nav__links li {
+    margin: 10px 0;
   }
 }
