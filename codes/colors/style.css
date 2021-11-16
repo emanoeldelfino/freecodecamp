@@ -1,0 +1,133 @@
+div {
+    position: relative;
+    border-radius: 10px;
+}
+
+.block {
+    border: 1px solid black;
+    width: 100px;
+    height: 100px;
+    margin: 4px;
+    display: inline-block;
+}
+
+.container {
+    position: absolute;
+    border: 1px solid black;
+    text-align: center;
+    height: 98%;
+    width: 99%;
+}
+
+#red {
+    background-color: #FF0000;
+}
+
+.tooltiptext {
+    visibility: hidden;
+    width: 75px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 20px;
+    right: 12.5px;
+    top: 30px;
+    margin: 10px 0; 
+    
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+}
+
+#red:hover .tooltiptext {
+    visibility: visible;
+}
+
+#green {
+    background-color: #00FF00;
+}
+
+#green:hover .tooltiptext {
+    visibility: visible;
+}
+
+#blue {
+    background-color: #0000FF;
+}
+
+#blue:hover .tooltiptext {
+    visibility: visible;
+}
+
+#cyan {
+    background-color: #00FFFF;
+}
+
+#cyan:hover .tooltiptext {
+    visibility: visible;
+}
+
+#magenta {
+    background-color: #FF00FF;
+}
+
+#magenta:hover .tooltiptext {
+    visibility: visible;
+}
+
+#yellow {
+    background-color: #FFFF00;
+}
+
+#yellow:hover .tooltiptext {
+    visibility: visible;
+}
+
+#azure {
+    background-color: #007FFF;
+}
+
+#azure:hover .tooltiptext {
+    visibility: visible;
+}
+
+#violet {
+    background-color: #7F00FF;
+}
+
+#violet:hover .tooltiptext {
+    visibility: visible;
+}
+
+#rose {
+    background-color: #FF007F;
+}
+
+#rose:hover .tooltiptext {
+    visibility: visible;
+}
+
+#orange {
+    background-color: #FF7F00;
+}
+
+#orange:hover .tooltiptext {
+    visibility: visible;
+}
+
+#chartreuse {
+    background-color: #7FFF00;
+}
+
+#chartreuse:hover .tooltiptext {
+    visibility: visible;
+}
+
+#spring {
+    background-color: #00FF7F;
+}
+
+#spring:hover .tooltiptext{
+    visibility: visible;
+}

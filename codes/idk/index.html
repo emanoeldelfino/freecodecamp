@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=`, initial-scale=1.0">
+  <title>Texts</title>
+  <style>
+    body {
+      display: flex;
+      align-items: center;
+      flex-direction: column-reverse;
+      line-height: 20px;
+      color: green;
+      background: black;
+    }
+
+    span {
+      font-weight: 800;
+    }
+  </style>
+</head>
+<body>
+  <script>
+    const body = document.querySelector("body");
+
+    // for (let i = 1; i <= 10; i++) {
+    font = 120;
+    i = 1;
+    while (font >= 4.5) {
+      body.innerHTML += `<span id=dots${i}>......................................................</span>`;
+      document.querySelector(`span#dots${i}`).style.fontSize = `${font}px`;
+      font /= 1.079;
+      i += 1;
+    }
+  </script>
+</body>
+</html>

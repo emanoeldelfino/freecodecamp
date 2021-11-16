@@ -1,0 +1,1 @@
+Inspired by [FreeCodeCamp](https://www.freecodecamp.org/) [tutorial](https://bit.ly/3hdUrgp) [image](https://cdn-media-1.freecodecamp.org/imgr/eWWi3gZ.gif) about offset properties top, right, bottom and left.
