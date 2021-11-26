@@ -33,6 +33,10 @@ section {
   color: rgb(0, 183, 255);
 }
 
+.sidebar-content-body ul li {
+  list-style-type: none; 
+}
+
 ul li {
   margin: 5px 0;
 }
