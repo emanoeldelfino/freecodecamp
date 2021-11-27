@@ -37,6 +37,10 @@ section {
   list-style-type: none; 
 }
 
+.button {
+  transition: all 400ms;
+}
+
 ul li {
   margin: 5px 0;
 }
