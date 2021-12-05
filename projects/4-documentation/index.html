@@ -20,18 +20,19 @@
           <div class="sidebar-content-body">
             <ul>
               <li><a href="#introduction" class="button">Introduction</a></li>
-              <li><a href="#know" class="button">What you should know</a></li>
-              <li><a href="#hello-world" class="button">Hello world</a></li>
+              <li>
+                <a href="#prerequisites" class="button">Prerequisites</a>
+              </li>
+              <li>
+                <a href="#first-program" class="button">Your first program</a>
+              </li>
+              <li><a href="#constants" class="button">Constants</a></li>
               <li><a href="#variables" class="button">Variables</a></li>
-              <li><a href="#declaring" class="button">Declaring variables</a></li>
-              <li><a href="#scope" class="button">Variable scope</a></li>
-              <li><a href="#global" class="button">Global variables</a></li>
-              <li><a href="#contants" class="button">Constants</a></li>
-              <li><a href="#data-types" class="button">Data types</a></li>
               <li><a href="#conditions" class="button">Conditions</a></li>
-              <li><a href="#while" class="button">While statement</a></li>
-              <li><a href="#for" class="button">For statement</a></li>
-              <li><a href="#function" class="button">Function declarations</a></li>
+              <li><a href="#loops" class="button">Loops</a></li>
+              <li>
+                <a href="#function" class="button">Functions</a>
+              </li>
               <li><a href="#reference" class="button">Reference</a></li>
             </ul>
           </div>
@@ -57,24 +58,220 @@
             </p>
           </div>
         </section>
-        <section id="know">
+        <section id="prerequisites">
           <h3 class="section-title">Prerequisites</h3>
           <div class="section-content">
             <ul>
-              <li><b>Some programming experience.</b>The code here is pretty simple, but it helps to know something about functions.</li>
-              <li><b>A tool to edit your code.</b>Any text editor you have will work fine. Most text editors have good support for Go. The most popular are VSCode (free), GoLand (paid), and Vim (free). </li>
-              <li><b>A command terminal.</b>Go works well using any terminal on Linux and Mac, and on PowerShell or cmd in Windows.</li>
+              <li>
+                <b>Some programming experience.</b> The code here is pretty
+                simple, but it helps to know something about functions.
+              </li>
+              <li>
+                <b>A tool to edit your code.</b> Any text editor you have will
+                work fine. Most text editors have good support for Go. The most
+                popular are VSCode (free), GoLand (paid), and Vim (free).
+              </li>
+              <li>
+                <b>A command terminal.</b> Go works well using any terminal on
+                Linux and Mac, and on PowerShell or cmd in Windows.
+              </li>
             </ul>
           </div>
         </section>
-        <section id="hello-world">
-          <h3 class="section-title">Hello world</h3>
+        <section id="first-program">
+          <h3 class="section-title">Your first program</h3>
           <div class="section-content">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
+              To compile and run a simple program, first choose a module path
+              (we'll use example/user/hello) and create a go.mod file that
+              declares it:
+            </p>
+            <code>
+              <pre>
+$ mkdir hello # Alternatively, clone it if it already exists in version control.
+$ cd hello
+$ go mod init example/user/hello
+go: creating new go.mod: module example/user/hello
+$ cat go.mod
+module example/user/hello
+
+go 1.16
+$
+              </pre>
+            </code>
+            <p>
+              The first statement in a Go source file must be package name.
+              Executable commands must always use package main.
+            </p>
+            <p>
+              Next, create a file named hello.go inside that directory
+              containing the following Go code:
+            </p>
+            <code>
+              <pre>
+package main
+
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, world.")
+}
+              </pre>
+            </code>
+            <p>Now you can build and install that program with the go tool:</p>
+            <code>
+              <pre>
+$ go install example/user/hello
+$
+              </pre>
+            </code>
+            <p>
+              This command builds the hello command, producing an executable
+              binary. It then installs that binary as $HOME/go/bin/hello (or,
+              under Windows, %USERPROFILE%\go\bin\hello.exe).
+            </p>
+            <p>
+              The install directory is controlled by the GOPATH and GOBIN
+              environment variables. If GOBIN is set, binaries are installed to
+              that directory. If GOPATH is set, binaries are installed to the
+              bin subdirectory of the first directory in the GOPATH list.
+              Otherwise, binaries are installed to the bin subdirectory of the
+              default GOPATH ($HOME/go or %USERPROFILE%\go).
+            </p>
+            <p>
+              You can use the go env command to portably set the default value
+              for an environment variable for future go commands:
+            </p>
+            <code>
+              <pre>
+$ go env -w GOBIN=/somewhere/else/bin
+$
+              </pre>
+            </code>
+            <p>
+              To unset a variable previously set by go env -w, use go env -u:
+            </p>
+
+            <code>
+              <pre>
+$ go env -u GOBIN
+$
+              </pre>
+            </code>
+            <p>
+              Commands like go install apply within the context of the module
+              containing the current working directory. If the working directory
+              is not within the example/user/hello module, go install may fail.
+            </p>
+            <p>
+              For convenience, go commands accept paths relative to the working
+              directory, and default to the package in the current working
+              directory if no other path is given. So in our working directory,
+              the following commands are all equivalent:
+            </p>
+            <code>
+              <pre>
+$ go install example/user/hello
+$ go install .
+$ go install
+              </pre>
+            </code>
+            <p>
+              Next, let's run the program to ensure it works. For added
+              convenience, we'll add the install directory to our PATH to make
+              running binaries easy:
+            </p>
+            <code>
+              <pre>
+# Windows users should consult https://github.com/golang/go/wiki/SettingGOPATH
+# for setting %PATH%.
+$ export PATH=$PATH:$(dirname $(go list -f '{{.Target}}' .))
+$ hello
+Hello, world.
+$
+              </pre>
+            </code>
+            <p></p>
+          </div>
+        </section>
+        <section id="constants">
+          <h3 class="section-title">Constants</h3>
+          <div class="section-content">
+            <p>
+              Constants in Go are just that—constant. They are created at
+              compile time, even when defined as locals in functions, and can
+              only be numbers, characters (runes), strings or booleans. Because
+              of the compile-time restriction, the expressions that define them
+              must be constant expressions, evaluatable by the compiler. For
+              instance,
+              <code>1&lt;&lt;3</code> is a constant expression, while
+              <code>math.Sin(math.Pi/4)</code> is not because the function call
+              to <code>math.Sin</code> needs to happen at run time.
+            </p>
+            <p>
+              In Go, enumerated constants are created using the iota enumerator.
+              Since iota can be part of an expression and expressions can be
+              implicitly repeated, it is easy to build intricate sets of values.
+            </p>
+            <code>
+              <pre>
+type ByteSize float64
+
+const (
+    _           = iota // ignore first value by assigning to blank identifier
+    KB ByteSize = 1 &lt;&lt; (10 * iota)
+    MB
+    GB
+    TB
+    PB
+    EB
+    ZB
+    YB
+)
+              </pre>
+            </code>
+            <p>
+              The ability to attach a method such as String to any user-defined
+              type makes it possible for arbitrary values to format themselves
+              automatically for printing. Although you'll see it most often
+              applied to structs, this technique is also useful for scalar types
+              such as floating-point types like ByteSize.
+            </p>
+            <code>
+              <pre>
+func (b ByteSize) String() string {
+    switch {
+    case b >= YB:
+        return fmt.Sprintf("%.2fYB", b/YB)
+    case b >= ZB:
+        return fmt.Sprintf("%.2fZB", b/ZB)
+    case b >= EB:
+        return fmt.Sprintf("%.2fEB", b/EB)
+    case b >= PB:
+        return fmt.Sprintf("%.2fPB", b/PB)
+    case b >= TB:
+        return fmt.Sprintf("%.2fTB", b/TB)
+    case b >= GB:
+        return fmt.Sprintf("%.2fGB", b/GB)
+    case b >= MB:
+        return fmt.Sprintf("%.2fMB", b/MB)
+    case b >= KB:
+        return fmt.Sprintf("%.2fKB", b/KB)
+    }
+    return fmt.Sprintf("%.2fB", b)
+}
+              </pre>
+            </code>
+            <p>
+              The expression YB prints as 1.00YB, while ByteSize(1e13) prints as
+              9.09TB.
+            </p>
+            <p>
+              The use here of Sprintf to implement ByteSize's String method is
+              safe (avoids recurring indefinitely) not because of a conversion
+              but because it calls Sprintf with %f, which is not a string
+              format: Sprintf will only call the String method when it wants a
+              string, and %f wants a floating-point value.
             </p>
           </div>
         </section>
@@ -82,66 +279,18 @@
           <h3 class="section-title">Variables</h3>
           <div class="section-content">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
+              Variables can be initialized just like constants but the
+              initializer can be a general expression computed at run time.
             </p>
-          </div>
-        </section>
-        <section id="declaring">
-          <h3 class="section-title">Declaring variables</h3>
-          <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
-          </div>
-        </section>
-        <section id="scope">
-          <h3 class="section-title">Variable scope</h3>
-          <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
-          </div>
-        </section>
-        <section id="global">
-          <h3 class="section-title">Global variables</h3>
-          <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
-          </div>
-        </section>
-        <section id="contants">
-          <h3 class="section-title">Constants</h3>
-          <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
-          </div>
-        </section>
-        <section id="data-types">
-          <h3 class="section-title">Data types</h3>
-          <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
+            <code>
+              <pre>
+var (
+    home   = os.Getenv("HOME")
+    user   = os.Getenv("USER")
+    gopath = os.Getenv("GOPATH")
+)
+              </pre>
+            </code>
           </div>
         </section>
         <section id="conditions">
@@ -155,19 +304,8 @@
             </p>
           </div>
         </section>
-        <section id="while">
-          <h3 class="section-title">While statement</h3>
-          <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
-          </div>
-        </section>
-        <section id="for">
-          <h3 class="section-title">For statement</h3>
+        <section id="loops">
+          <h3 class="section-title">Loops</h3>
           <div class="section-content">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.
@@ -178,7 +316,7 @@
           </div>
         </section>
         <section id="function">
-          <h3 class="section-title">Function declarations</h3>
+          <h3 class="section-title">Functions</h3>
           <div class="section-content">
             <p>
               Lorem ipsum dolor sit, amet consectetur adipisicing elit.

@@ -23,6 +23,10 @@ section {
   margin-bottom: 25px;
 }
 
+code {
+  white-space: pre-line;
+}
+
 .sidebar {
   margin-right: 15px;
   position: fixed;
@@ -34,11 +38,17 @@ section {
 }
 
 .sidebar-content-body ul li {
-  list-style-type: none; 
+  list-style-type: none;
 }
 
 .button {
   transition: all 400ms;
+}
+
+ul {
+  list-style-position: inside;
+  margin-left: 20px;
+  margin-top: 15px;
 }
 
 ul li {
