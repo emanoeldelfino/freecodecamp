@@ -11,7 +11,7 @@
     <div class="wrapper">
       <div class="sidebar">
         <div class="sidebar-title">
-          <h1>GoLang</h1>
+          <h1 class="title">GoLang</h1>
         </div>
         <div class="sidebar-content">
           <div class="sidebar-content-title">
@@ -30,9 +30,8 @@
               <li><a href="#variables" class="button">Variables</a></li>
               <li><a href="#if-statement" class="button">If statement</a></li>
               <li><a href="#for-loop" class="button">For Loop</a></li>
-              <li>
-                <a href="#function" class="button">Functions</a>
-              </li>
+              <li><a href="switch" class="button">Switch</a></li>
+              <li><a href="#function" class="button">Functions</a></li>
               <li><a href="#reference" class="button">Reference</a></li>
             </ul>
           </div>
@@ -452,26 +451,184 @@ character U+8A9E '語' starts at byte position 7
             </code>
           </div>
         </section>
+        <section>
+          <h3 class="section-title">Switch statement</h3>
+          <div class="section-content">
+            <p>
+              Go's switch is more general than C's. The expressions need not be
+              constants or even integers, the cases are evaluated top to bottom
+              until a match is found, and if the switch has no expression it
+              switches on true. It's therefore possible—and idiomatic—to write
+              an if-else-if-else chain as a switch.
+            </p>
+            <code>
+              <pre>
+func unhex(c byte) byte {
+    switch {
+    case '0' <= c && c <= '9':
+        return c - '0'
+    case 'a' <= c && c <= 'f':
+        return c - 'a' + 10
+    case 'A' <= c && c <= 'F':
+        return c - 'A' + 10
+    }
+    return 0
+}
+              </pre>
+            </code>
+            <p>
+              There is no automatic fall through, but cases can be presented in
+              comma-separated lists.
+            </p>
+            <code>
+              <pre>
+                func shouldEscape(c byte) bool {
+                  switch c {
+                  case ' ', '?', '&', '=', '#', '+', '%':
+                      return true
+                  }
+                  return false
+              }
+              </pre>
+            </code>
+            <p>
+              Although they are not nearly as common in Go as some other C-like
+              languages, break statements can be used to terminate a switch
+              early. Sometimes, though, it's necessary to break out of a
+              surrounding loop, not the switch, and in Go that can be
+              accomplished by putting a label on the loop and "breaking" to that
+              label. This example shows both uses.
+            </p>
+            <code>
+              <pre>
+Loop:
+	for n := 0; n < len(src); n += size {
+		switch {
+		case src[n] < sizeOne:
+			if validateOnly {
+				break
+			}
+			size = 1
+			update(src[n])
+
+		case src[n] < sizeTwo:
+			if n+1 >= len(src) {
+				err = errShortInput
+				break Loop
+			}
+			if validateOnly {
+				break
+			}
+			size = 2
+			update(src[n] + src[n+1]&lt;&lt;shift)
+		}
+	}
+              </pre>
+            </code>
+            <p>
+              Of course, the continue statement also accepts an optional label
+              but it applies only to loops.
+            </p>
+            <p>
+              To close this section, here's a comparison routine for byte slices
+              that uses two switch statements:
+            </p>
+            <code>
+              <pre>
+// Compare returns an integer comparing the two byte slices,
+// lexicographically.
+// The result will be 0 if a == b, -1 if a < b, and +1 if a > b
+func Compare(a, b []byte) int {
+    for i := 0; i < len(a) && i < len(b); i++ {
+        switch {
+        case a[i] > b[i]:
+            return 1
+        case a[i] < b[i]:
+            return -1
+        }
+    }
+    switch {
+    case len(a) > len(b):
+        return 1
+    case len(a) < len(b):
+        return -1
+    }
+    return 0
+}
+              </pre>
+            </code>
+          </div>
+        </section>
         <section id="function">
           <h3 class="section-title">Functions</h3>
           <div class="section-content">
             <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
+              One of Go's unusual features is that functions and methods can
+              return multiple values. This form can be used to improve on a
+              couple of clumsy idioms in C programs: in-band error returns such
+              as -1 for EOF and modifying an argument passed by address.
             </p>
+            <p>
+              In C, a write error is signaled by a negative count with the error
+              code secreted away in a volatile location. In Go, Write can return
+              a count and an error: “Yes, you wrote some bytes but not all of
+              them because you filled the device”. The signature of the Write
+              method on files from package os is:
+            </p>
+            <code>
+              <pre>
+func (file *File) Write(b []byte) (n int, err error)
+              </pre>
+            </code>
+            <p>
+              and as the documentation says, it returns the number of bytes
+              written and a non-nil error when n != len(b). This is a common
+              style; see the section on error handling for more examples.
+            </p>
+            <p>
+              A similar approach obviates the need to pass a pointer to a return
+              value to simulate a reference parameter. Here's a simple-minded
+              function to grab a number from a position in a byte slice,
+              returning the number and the next position.
+            </p>
+            <code>
+              <pre>
+func nextInt(b []byte, i int) (int, int) {
+    for ; i < len(b) && !isDigit(b[i]); i++ {
+    }
+    x := 0
+    for ; i < len(b) && isDigit(b[i]); i++ {
+        x = x*10 + int(b[i]) - '0'
+    }
+    return x, i
+}
+              </pre>
+            </code>
+            <p>
+              You could use it to scan the numbers in an input slice b like
+              this:
+            </p>
+            <code>
+              <pre>
+for i := 0; i < len(b); {
+    x, i = nextInt(b, i)
+    fmt.Println(x)
+}
+              </pre>
+            </code>
           </div>
         </section>
         <section id="reference">
           <h3 class="section-title">Reference</h3>
           <div class="section-content">
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-              Distinctio modi perspiciatis nobis delectus explicabo quibusdam
-              illum tempore voluptas repudiandae! In, ipsa consectetur mollitia
-              veniam dolores natus debitis cum omnis rerum?
-            </p>
+            <ul>
+              <li>
+                All the documentation in this page is taken from
+                <a href="https://go.dev/doc/effective_go"
+                  >Effective GO official docs</a
+                >
+              </li>
+            </ul>
           </div>
         </section>
       </main>
