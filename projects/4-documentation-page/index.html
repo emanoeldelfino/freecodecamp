@@ -4,42 +4,39 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>GoLang Documentation</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="wrapper">
-      <div class="sidebar">
-        <div class="sidebar-title">
-          <h1 class="title">GoLang</h1>
+      <nav id="navbar">
+        <header>GoLang Documentation</header>
+        <div class="navbar-content-body">
+          <ul>
+            <li><a href="#Introduction" class="nav-link">Introduction</a></li>
+            <li>
+              <a href="#Prerequisites" class="nav-link">Prerequisites</a>
+            </li>
+            <li>
+              <a href="#Your_first_program" class="nav-link"
+                >Your first program</a
+              >
+            </li>
+            <li><a href="#Constants" class="nav-link">Constants</a></li>
+            <li><a href="#Variables" class="nav-link">Variables</a></li>
+            <li><a href="#If_statement" class="nav-link">If statement</a></li>
+            <li><a href="#For_Loop" class="nav-link">For Loop</a></li>
+            <li>
+              <a href="#Switch_statement" class="nav-link">Switch statement</a>
+            </li>
+            <li><a href="#Functions" class="nav-link">Functions</a></li>
+            <li><a href="#Reference" class="nav-link">Reference</a></li>
+          </ul>
         </div>
-        <div class="sidebar-content">
-          <div class="sidebar-content-title">
-            <h2>Documentation</h2>
-          </div>
-          <div class="sidebar-content-body">
-            <ul>
-              <li><a href="#introduction" class="button">Introduction</a></li>
-              <li>
-                <a href="#prerequisites" class="button">Prerequisites</a>
-              </li>
-              <li>
-                <a href="#first-program" class="button">Your first program</a>
-              </li>
-              <li><a href="#constants" class="button">Constants</a></li>
-              <li><a href="#variables" class="button">Variables</a></li>
-              <li><a href="#if-statement" class="button">If statement</a></li>
-              <li><a href="#for-loop" class="button">For Loop</a></li>
-              <li><a href="switch" class="button">Switch</a></li>
-              <li><a href="#function" class="button">Functions</a></li>
-              <li><a href="#reference" class="button">Reference</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <main>
-        <section id="introduction">
-          <h3 class="section-title">Introduction</h3>
+      </nav>
+      <main id="main-doc">
+        <section id="Introduction" class="main-section">
+          <header class="section-title">Introduction</header>
           <div class="section-content">
             <p>
               The Go programming language is an open source project to make
@@ -57,8 +54,8 @@
             </p>
           </div>
         </section>
-        <section id="prerequisites">
-          <h3 class="section-title">Prerequisites</h3>
+        <section id="Prerequisites" class="main-section">
+          <header class="section-title">Prerequisites</header>
           <div class="section-content">
             <ul>
               <li>
@@ -77,8 +74,8 @@
             </ul>
           </div>
         </section>
-        <section id="first-program">
-          <h3 class="section-title">Your first program</h3>
+        <section id="Your_first_program" class="main-section">
+          <header class="section-title">Your first program</header>
           <div class="section-content">
             <p>
               To compile and run a simple program, first choose a module path
@@ -193,90 +190,43 @@ $
             <p></p>
           </div>
         </section>
-        <section id="constants">
-          <h3 class="section-title">Constants</h3>
+        <section id="Constants" class="main-section">
+          <header class="section-title">Constants</header>
           <div class="section-content">
             <p>
-              Constants in Go are just that—constant. They are created at
-              compile time, even when defined as locals in functions, and can
-              only be numbers, characters (runes), strings or booleans. Because
-              of the compile-time restriction, the expressions that define them
-              must be constant expressions, evaluatable by the compiler. For
-              instance,
-              <code>1&lt;&lt;3</code> is a constant expression, while
-              <code>math.Sin(math.Pi/4)</code> is not because the function call
-              to <code>math.Sin</code> needs to happen at run time.
-            </p>
-            <p>
-              In Go, enumerated constants are created using the iota enumerator.
-              Since iota can be part of an expression and expressions can be
-              implicitly repeated, it is easy to build intricate sets of values.
-            </p>
-            <code>
-              <pre>
-type ByteSize float64
+              There are boolean constants, rune constants, integer constants, floating-point constants, complex constants, and string constants. Rune, integer, floating-point, and complex constants are collectively called numeric constants.
+            </p> 
+<p>
+  A constant value is represented by a rune, integer, floating-point, imaginary, or string literal, an identifier denoting a constant, a constant expression, a conversion with a result that is a constant, or the result value of some built-in functions such as unsafe.Sizeof applied to any value, cap or len applied to some expressions, real and imag applied to a complex constant and complex applied to numeric constants. The boolean truth values are represented by the predeclared constants true and false. The predeclared identifier iota denotes an integer constant.
+</p>
+<p>In general, complex constants are a form of constant expression and are discussed in that section.</p>
+<p>Numeric constants represent exact values of arbitrary precision and do not overflow. Consequently, there are no constants denoting the IEEE-754 negative zero, infinity, and not-a-number values.</p>
+<p>
+  Constants may be typed or untyped. Literal constants, true, false, iota, and certain constant expressions containing only untyped constant operands are untyped.
+</p>
+<p>
+  A constant may be given a type explicitly by a constant declaration or conversion, or implicitly when used in a variable declaration or an assignment or as an operand in an expression. It is an error if the constant value cannot be represented as a value of the respective type.
+</p>
+<p>
+  An untyped constant has a default type which is the type to which the constant is implicitly converted in contexts where a typed value is required, for instance, in a short variable declaration such as i := 0 where there is no explicit type. The default type of an untyped constant is bool, rune, int, float64, complex128 or string respectively, depending on whether it is a boolean, rune, integer, floating-point, complex, or string constant.
+</p>
+<p>
 
-const (
-    _           = iota // ignore first value by assigning to blank identifier
-    KB ByteSize = 1 &lt;&lt; (10 * iota)
-    MB
-    GB
-    TB
-    PB
-    EB
-    ZB
-    YB
-)
-              </pre>
-            </code>
-            <p>
-              The ability to attach a method such as String to any user-defined
-              type makes it possible for arbitrary values to format themselves
-              automatically for printing. Although you'll see it most often
-              applied to structs, this technique is also useful for scalar types
-              such as floating-point types like ByteSize.
-            </p>
-            <code>
-              <pre>
-func (b ByteSize) String() string {
-    switch {
-    case b >= YB:
-        return fmt.Sprintf("%.2fYB", b/YB)
-    case b >= ZB:
-        return fmt.Sprintf("%.2fZB", b/ZB)
-    case b >= EB:
-        return fmt.Sprintf("%.2fEB", b/EB)
-    case b >= PB:
-        return fmt.Sprintf("%.2fPB", b/PB)
-    case b >= TB:
-        return fmt.Sprintf("%.2fTB", b/TB)
-    case b >= GB:
-        return fmt.Sprintf("%.2fGB", b/GB)
-    case b >= MB:
-        return fmt.Sprintf("%.2fMB", b/MB)
-    case b >= KB:
-        return fmt.Sprintf("%.2fKB", b/KB)
-    }
-    return fmt.Sprintf("%.2fB", b)
-}
-              </pre>
-            </code>
-            <p>
-              The expression YB prints as 1.00YB, while ByteSize(1e13) prints as
-              9.09TB.
-            </p>
-            <p>
-              The use here of Sprintf to implement ByteSize's String method is
-              safe (avoids recurring indefinitely) not because of a conversion
-              but because it calls Sprintf with %f, which is not a string
-              format: Sprintf will only call the String method when it wants a
-              string, and %f wants a floating-point value.
-            </p>
-          </div>
+  Implementation restriction: Although numeric constants have arbitrary precision in the language, a compiler may implement them using an internal representation with limited precision. That said, every implementation must:
+</p>
+<ul>
+  <li>Represent integer constants with at least 256 bits.</li>
+  <li>Represent floating-point constants, including the parts of a complex constant, with a mantissa of at least 256 bits and a signed binary exponent of at least 16 bits.</li>
+  <li>Give an error if unable to represent an integer constant precisely.</li>
+  <li>Give an error if unable to represent a floating-point or complex constant due to overflow.</li>
+  <li>Round to the nearest representable constant if unable to represent a floating-point or complex constant due to limits on precision.</li>
+</ul>
+<p>Round to the nearest representable constant if unable to represent a floating-point or complex constant due to limits on precision.</p>
         </section>
-        <section id="variables">
-          <h3 class="section-title">Variables</h3>
+        <section id="Variables" class="main-section">
+          <header class="section-title">Variables</header>
           <div class="section-content">
+            <p>Round to the nearest representable constant if unable to represent a floating-point or complex constant due to limits on precision.</p>
             <p>
               Variables can be initialized just like constants but the
               initializer can be a general expression computed at run time.
@@ -292,8 +242,8 @@ var (
             </code>
           </div>
         </section>
-        <section id="if-statement">
-          <h3 class="section-title">If statement</h3>
+        <section id="If_statement" class="main-section">
+          <header class="section-title">If statement</header>
           <div class="section-content">
             <p>In Go a simple if looks like this:</p>
             <code>
@@ -357,8 +307,8 @@ codeUsing(f, d)
             </code>
           </div>
         </section>
-        <section id="for-loop">
-          <h3 class="section-title">For Loop</h3>
+        <section id="For_Loop" class="main-section">
+          <header class="section-title">For Loop</header>
           <div class="section-content">
             <p>
               The Go for loop is similar to—but not the same as—C's. It unifies
@@ -451,8 +401,8 @@ character U+8A9E '語' starts at byte position 7
             </code>
           </div>
         </section>
-        <section>
-          <h3 class="section-title">Switch statement</h3>
+        <section id="Switch_statement" class="main-section">
+          <header class="section-title">Switch statement</header>
           <div class="section-content">
             <p>
               Go's switch is more general than C's. The expressions need not be
@@ -559,8 +509,8 @@ func Compare(a, b []byte) int {
             </code>
           </div>
         </section>
-        <section id="function">
-          <h3 class="section-title">Functions</h3>
+        <section id="Functions" class="main-section">
+          <header class="section-title">Functions</header>
           <div class="section-content">
             <p>
               One of Go's unusual features is that functions and methods can
@@ -618,15 +568,15 @@ for i := 0; i < len(b); {
             </code>
           </div>
         </section>
-        <section id="reference">
-          <h3 class="section-title">Reference</h3>
+        <section id="Reference" class="main-section">
+          <header class="section-title">Reference</header>
           <div class="section-content">
             <ul>
               <li>
                 All the documentation in this page is taken from
                 <a href="https://go.dev/doc/effective_go"
                   >Effective GO official docs</a
-                >
+                > and <a href="https://go.dev/ref/spec">The Go Programming Language Specification</a>
               </li>
             </ul>
           </div>
