@@ -93,18 +93,18 @@
       </ul>
       <span id="copyright">© 2021 uBottle</span>
     </footer>
+    <script>
+      let i = 1;
+
+      const slide = document.querySelector("section#bottles img");
+
+      function changeSlide() {
+        slide.src = `./assets/slider${i}.jpg`;
+        i = i < 3 ? i + 1 : 1;
+        setTimeout(changeSlide, 3000);
+      }
+      changeSlide();
+    </script>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
   </body>
-  <script>
-    let i = 1;
-
-    const slide = document.querySelector("section#bottles img");
-
-    function changeSlide() {
-      slide.src = `./assets/slider${i}.jpg`;
-      i = i < 3 ? i + 1 : 1;
-      setTimeout(changeSlide, 3000);
-    }
-    changeSlide();
-  </script>
-  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </html>
