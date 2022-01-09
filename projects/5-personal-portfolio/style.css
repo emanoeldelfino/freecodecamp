@@ -107,7 +107,7 @@ h1::after {
 
 .projects-section-header {
   color: white;
-  margin-bottom: 35px;
+  margin-bottom: 100px;
 }
 
 .projects-section-header::before {
@@ -226,7 +226,6 @@ footer p {
 }
 
 .project-tile {
-  border: 1px solid gray;
   border-radius: 5px;
   margin: 5px;
 }
@@ -234,19 +233,26 @@ footer p {
 .project-tile a {
   text-decoration: none;
   color: white;
+  display: flex;
+  flex-direction: column;
 }
 
 .project-tile p {
   text-align: center;
+  background-color: gray;
+  border-radius: 0 0 5px 5px;
 }
 
 .project-tile a img {
   width: 500px;
+  border: 1px solid gray;
+  border-radius: 5px 5px 0 0;
 }
 
 .projects-grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 20px;
 }
 
 @media (max-width: 1600px) {
@@ -263,6 +269,14 @@ footer p {
   .projects-grid {
     grid-template-columns: 1fr;
   }
+
+  .project-tile {
+    width: 75vw;
+  }
+
+  .project-tile a img {
+    width: inherit;
+  }
 }
 
 @media (max-width: 500px) {
@@ -274,7 +288,12 @@ footer p {
     font-size: 7vw;
   }
 
+  .projects-section-header {
+    margin-bottom: 50px;
+  }
+
   .projects-section-header, #contact h2 {
     font-size: 10vw;
   }
+
 }
