@@ -149,7 +149,7 @@ nav ul li {
 nav ul li a {
   color: rgb(255, 255, 255);
   height: 100%;
-  margin: 0 15px;
+  padding: 0 15px;
   display: flex;
   align-items: center;
 }
@@ -159,15 +159,8 @@ nav#navbar ul li:hover {
     /* White glow */
     0 0 7px #fff,
     0 0 10px #fff,
-    0 0 21px #fff,
-    /* Green glow */
-    0 0 42px #0fa,
-    0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa,
-    0 0 151px #0fa;
-  filter: brightness(0.85);
-  background-color: rgb(105, 105, 105);
+    0 0 21px #fff;
+  background-color: gray;
 }
 
 section#projects {
@@ -245,6 +238,7 @@ footer p {
 
 .project-tile a img {
   width: 500px;
+  height: auto;
   border: 1px solid gray;
   border-radius: 5px 5px 0 0;
 }
