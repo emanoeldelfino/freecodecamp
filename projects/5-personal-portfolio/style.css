@@ -238,7 +238,9 @@ footer p {
 
 .project-tile a img {
   width: 500px;
+  max-height: 100%;
   height: auto;
+  object-fit: cover;
   border: 1px solid gray;
   border-radius: 5px 5px 0 0;
 }
