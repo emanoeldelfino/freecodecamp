@@ -191,7 +191,7 @@ section#contact {
   font-size: 20px;
 }
 
-#contact ul li a:hover {
+#contact ul li:hover {
   transform: translateY(-15px);
 }
 
