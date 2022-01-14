@@ -1,5 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
+:root {
+  --bg-code: #f3f3f3;
+  --heading-color: rgb(0, 183, 255);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -19,10 +24,9 @@ code {
 }
 
 pre {
-  background-color: #f7f7f7;
+  background-color: var(--bg-code);
   border-radius: 10px;
   word-wrap: break-word;
-  white-space: pre-line;
   margin: 10px;
   padding: 15px;
 }
@@ -69,7 +73,7 @@ ul li {
 }
 
 #navbar header {
-  color: rgb(0, 183, 255);
+  color: var(--heading-color);
   display: flex;
   margin-top: 10px;
   font-size: 25px;
