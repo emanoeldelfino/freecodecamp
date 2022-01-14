@@ -61,18 +61,22 @@ a:hover {
     color: red;
     transform: scale(1.5);
   }
+
   25% {
     color: green;
     transform: scale(2.5);
   }
+
   50% {
     color: blue;
     transform: scale(1.5);
   }
+
   75% {
     color: orange;
     transform: scale(2.5);
   }
+
   100% {
     color: purple;
     transform: scale(1.5);
