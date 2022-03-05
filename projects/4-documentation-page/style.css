@@ -25,10 +25,20 @@ code {
 
 pre {
   background-color: var(--bg-code);
-  border-radius: 10px;
+  border-radius: 5px;
   word-wrap: break-word;
-  margin: 10px;
+  margin: 10px 0;
   padding: 15px;
+  overflow-x: auto;
+}
+
+pre::-webkit-scrollbar {
+  height: 12px;
+}
+
+pre::-webkit-scrollbar-thumb {
+  background: #cec7c7; 
+  border-radius: 5px;
 }
 
 main {
