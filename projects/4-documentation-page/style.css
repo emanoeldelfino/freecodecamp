@@ -19,10 +19,6 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-code {
-  white-space: normal;
-}
-
 pre {
   background-color: var(--bg-code);
   border-radius: 5px;
@@ -41,9 +37,13 @@ pre::-webkit-scrollbar-thumb {
   border-radius: 5px;
 }
 
+p {
+  word-wrap: break-word;
+}
+
 main {
-  margin-left: 190px;
-  width: 80vw;
+  margin-left: 200px;
+  width: 75vw;
 }
 
 section {
