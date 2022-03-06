@@ -6,26 +6,35 @@
   box-sizing: border-box;
 }
 
+:root {
+  --hf-color: #f8f4f4;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
-  background-color: rgb(215, 226, 241);
 }
 
 main, footer {
-  margin: 0 75px;
+  margin: 0;
 }
 
 main {
-  margin-top: 50px;
+  margin-top: 75px;
 }
 
 header {
   display: flex;
   align-items: center;
   position: fixed;
-  width: 100%;
+  min-height: 50px;
+  width: 100vw;
   top: 0;
-  background-color: rgb(215, 226, 241);
+  background-color: var(--hf-color);
+  z-index: 99;
+}
+
+section {
+  margin: 40px;
 }
 
 #text {
@@ -33,20 +42,37 @@ header {
   max-width: 400px;
 }
 
-#logo img {
-  margin-left: 10px;
+.bi {
+  font-size: 25px;
+  transition: all .3s ease-in-out;
+}
+
+.bi-droplet-fill {
+  font-size: 30px;
+  margin-left: 45px;
+  margin-right: 5px;
+}
+
+.bi-instagram:hover {
+  color: #e1306c;
+}
+
+.bi-twitter:hover {
+  color: #1da1f2;
+}
+
+.bi-tiktok:hover {
+  color: gray;
 }
 
 nav#nav-bar {
   width: 100%;
 }
 
-#about-us {
+#about {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: auto;
-  padding: 50px;
 }
 
 #phrase {
@@ -64,6 +90,14 @@ nav#nav-bar {
 #logo {
   display: flex;
   align-items: center;
+}
+
+#logo h1, #logo .bi {
+  transition: all .3s ease-in-out;
+}
+
+#logo:hover h1, #logo:hover .bi {
+  color: #00d5ff;
 }
 
 #features {
@@ -86,7 +120,9 @@ nav#nav-bar {
 .tooltip-text {
   visibility: hidden;
   position: absolute;
-  max-width: 330px;
+  display: flex;
+  align-items: center;
+  width: 170px;
   pointer-events: none;
   margin-bottom: 55px;
   background-color: black;
@@ -95,7 +131,21 @@ nav#nav-bar {
   border-radius: 10px;
 }
 
-#features div span:hover+span {
+/* tooltip bottom arrow */
+.material-icons::before {
+  visibility: hidden;
+  content: '';
+  position: relative;
+  bottom: 7px;
+  left: 60%;
+  margin-left: -10px;
+  border-width: 10px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
+}
+
+#features div span:hover+span,
+#features div span:hover::before {
   visibility: visible;
 }
 
@@ -120,27 +170,28 @@ nav#nav-bar {
   justify-content: center;
 }
 
-iframe#video {
+iframe {
   width: 90vw;
   height: 90vw;
   max-width: 600px;
   max-height: 600px;
-  margin-bottom: 50px;
+  border-radius: 10px;
 }
 
-#about-us, #features {
-  max-width: 1250px;
+#about, #features {
+  max-width: 1500px;
 }
 
 .nav__links {
   display: flex;
-  justify-content: space-between;
+  justify-content: right;
   margin: 0 30px;
 }
 
 .nav__links li {
   font-size: 20px;
   text-align: center;
+  margin-right: 35px;
 }
 
 .nav__links li, footer li {
@@ -153,7 +204,7 @@ iframe#video {
 }
 
 #form {
-  margin: 30px 20px;
+  margin: 40px 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -161,35 +212,39 @@ iframe#video {
 
 #submit {
   margin-top: 15px;
+  transition: .7s background-color;
+}
+
+#submit:hover {
+  background-color: rgba(0, 0, 0, .75);
 }
 
 input {
-  border: 1px solid #777;
+  border: 1px solid rgb(0, 0, 0);
   border-radius: 10px;
   height: 35px;
 }
 
 #email {
   text-align: center;
+  transition: all 0.3s ease-in-out;
 }
 
-#submit {
-  transition: .7s background-color;
-}
-
-input#submit:hover {
-  background-color: rgba(0, 0, 0, .4);
+#email:focus {
+  transform: scale(1.1);
 }
 
 #submit, #email {
   max-width: 300px;
   width: 250px;
   font-size: 17px;
+  background-color: black;
+  color: white;
 }
 
 input#email::placeholder {
   text-align: center;
-  color: rgba(0, 0, 0, 0.8);
+  color: white;
 }
 
 #bottles {
@@ -198,14 +253,17 @@ input#email::placeholder {
 }
 
 #bottles img {
-  height: 50vh;
+  width: 100%;
+  max-width: 850px;
+  border-radius: 1vw;
 }
 
 footer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row-reverse;
+  justify-content: space-between;
   padding: 15px;
-  background-color: rgba(0, 102, 255, .05);
+  background-color: var(--hf-color);
 }
 
 footer ul li {
@@ -215,10 +273,12 @@ footer ul li {
 footer ul {
   display: flex;
   flex-direction: row;
+  gap: 15px;
 }
 
 #copyright {
-  margin-top: 15px;
+  display: flex;
+  align-items: center;
 }
 
 @media (max-width: 1150px) {
@@ -230,7 +290,7 @@ footer ul {
     margin: 100px 0 30px 0;
   }
 
-  #about-us {
+  #about {
     flex-direction: column;
     align-items: space-between;
   }
@@ -244,24 +304,38 @@ footer ul {
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 575px) {
+  main {
+    margin-top: 200px;
+  }
+
   header {
     flex-direction: column;
     padding-bottom: 15px;
   }
 
-  footer {
-    margin: 0;
+  .bi {
+    margin-right: 5px;
+    margin-left: 0;
   }
 
   #bottles img {
-    height: 30vh;
+    height: 25vh;
   }
-}
 
-@media (max-width: 400px) {
-  main {
-    margin-top: 200px;
+  .tooltip-text {
+    left: 0;
+    margin-left: 55px;
+    width: 80vw;
+  }
+
+  .nav__links {
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .nav__links li {
+    margin-right: 0;
   }
 
   header .nav__links {
@@ -273,3 +347,11 @@ footer ul {
     margin: 10px 0;
   }
 }
+
+/* @media (max-width: 425px) {
+  footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+} */

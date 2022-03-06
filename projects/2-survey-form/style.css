@@ -120,11 +120,11 @@ p {
   border: none;
   cursor: pointer;
   transition: .6s background-color;
-  height: 45px;
+  height: 40px;
 }
 
 #submit:hover {
-  background-color: rgba(140, 140, 140);
+  background-color: #606060;
 }
 
 .form-group:not(:first-child) {
