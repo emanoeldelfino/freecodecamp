@@ -8,6 +8,7 @@
 
 :root {
   --hf-color: #f8f4f4;
+  --cyan: #00d5ff;
 }
 
 body {
@@ -96,8 +97,14 @@ nav#nav-bar {
   transition: all .3s ease-in-out;
 }
 
-#logo:hover h1, #logo:hover .bi {
-  color: #00d5ff;
+#logo:hover h1, 
+#logo:hover .bi,
+.nav__links li a:hover {
+  color: var(--cyan);
+}
+
+.nav__links li:hover {
+  transform: scale(1.15);
 }
 
 #features {
@@ -213,6 +220,9 @@ iframe {
 #submit {
   margin-top: 15px;
   transition: .7s background-color;
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
 
 #submit:hover {
@@ -228,6 +238,8 @@ input {
 #email {
   text-align: center;
   transition: all 0.3s ease-in-out;
+  background-color: white;
+  color: black;
 }
 
 #email:focus {
@@ -236,15 +248,13 @@ input {
 
 #submit, #email {
   max-width: 300px;
-  width: 250px;
+  width: 100%;
   font-size: 17px;
-  background-color: black;
-  color: white;
 }
 
 input#email::placeholder {
   text-align: center;
-  color: white;
+  color: #4d4d4d;
 }
 
 #bottles {
@@ -319,14 +329,10 @@ footer ul {
     margin-left: 0;
   }
 
-  #bottles img {
-    height: 25vh;
-  }
-
   .tooltip-text {
     left: 0;
-    margin-left: 55px;
-    width: 80vw;
+    margin-left: 15px;
+    width: 90vw;
   }
 
   .nav__links {
@@ -348,10 +354,10 @@ footer ul {
   }
 }
 
-/* @media (max-width: 425px) {
+@media (max-width: 325px) {
   footer {
     flex-direction: column;
     align-items: center;
     gap: 15px;
   }
-} */
+}
